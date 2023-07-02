@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package
+    xmlns="http://www.idpf.org/2007/opf"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    unique-identifier="{{ id }}"
+    version="3.0"
+>
+    <metadata>
+        <meta name="cover" content="cover-image" />
+        <meta property="dcterms:modified">{{ modified|format_utc }}</meta>
+        <dc:title>{{ title }}</dc:title>
+        <dc:identifier id="{{ id }}">{{ id }}</dc:identifier>
+        <dc:creator id="author">{{ author }}</dc:creator>
+        <dc:language>{{ language }}</dc:language>
+    </metadata>
+    <manifest>
+        <item href="content/cover.jpg" id="cover-image" media-type="image/jpeg" />
+        <item id="cover" href="content/cover.html" media-type="application/xhtml+xml"/>
+        <item id="nav" href="nav.xhtml" properties="nav" media-type="application/xhtml+xml"/>
+    {% for chapter in chapters %}
+        <item id="chapter_{{ loop.index }}"
+              href="content/chapter_{{ loop.index }}.html"
+              media-type="application/xhtml+xml"/>
+    {% endfor %}
+    </manifest>
+    <spine>
+    {% for chapter in chapters %}
+        <itemref idref="chapter_{{ loop.index }}"/>
+    {% endfor %}
+    </spine>
+</package>

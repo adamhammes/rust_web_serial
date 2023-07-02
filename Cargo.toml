@@ -1,0 +1,17 @@
+[package]
+name = "rust_web_serial"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+askama = "0.12.0"
+bytes = "1.4.0"
+futures = "0.3.28"
+reqwest = "0.11.17"
+scraper = "0.16.0"
+time = { version = "0.3.21", features = ["formatting", "parsing"] }
+tokio = { version = "1.28.0", features = ["macros"] }
+url = "2.3.1"
+zip = "0.6.6"
